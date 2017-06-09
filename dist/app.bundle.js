@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 99);
+/******/ 	return __webpack_require__(__webpack_require__.s = 94);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1055,17 +1055,17 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__(17));
+__export(__webpack_require__(83));
+__export(__webpack_require__(84));
+__export(__webpack_require__(85));
+__export(__webpack_require__(86));
+__export(__webpack_require__(87));
 __export(__webpack_require__(88));
-__export(__webpack_require__(89));
-__export(__webpack_require__(90));
-__export(__webpack_require__(91));
 __export(__webpack_require__(92));
-__export(__webpack_require__(93));
-__export(__webpack_require__(97));
 __export(__webpack_require__(33));
 __export(__webpack_require__(38));
-__export(__webpack_require__(94));
-__export(__webpack_require__(87));
+__export(__webpack_require__(89));
+__export(__webpack_require__(82));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -2371,7 +2371,7 @@ exports.locationPluginFactory = locationPluginFactory;
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(98);
+__webpack_require__(93);
 module.exports = angular;
 
 
@@ -4085,10 +4085,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var angular_1 = __webpack_require__(8);
 var core_1 = __webpack_require__(4);
 var views_1 = __webpack_require__(24);
-var templateFactory_1 = __webpack_require__(76);
+var templateFactory_1 = __webpack_require__(71);
 var stateProvider_1 = __webpack_require__(31);
-var onEnterExitRetain_1 = __webpack_require__(75);
-var locationServices_1 = __webpack_require__(73);
+var onEnterExitRetain_1 = __webpack_require__(70);
+var locationServices_1 = __webpack_require__(68);
 var urlRouterProvider_1 = __webpack_require__(32);
 angular_1.ng.module("ui.router.angular1", []);
 var mod_init = angular_1.ng.module('ui.router.init', []);
@@ -4880,21 +4880,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var interface_1 = __webpack_require__(10);
 var transition_1 = __webpack_require__(20);
 var hookRegistry_1 = __webpack_require__(29);
-var coreResolvables_1 = __webpack_require__(78);
-var redirectTo_1 = __webpack_require__(82);
-var onEnterExitRetain_1 = __webpack_require__(81);
-var resolve_1 = __webpack_require__(83);
-var views_1 = __webpack_require__(86);
-var updateGlobals_1 = __webpack_require__(84);
-var url_1 = __webpack_require__(85);
+var coreResolvables_1 = __webpack_require__(73);
+var redirectTo_1 = __webpack_require__(77);
+var onEnterExitRetain_1 = __webpack_require__(76);
+var resolve_1 = __webpack_require__(78);
+var views_1 = __webpack_require__(81);
+var updateGlobals_1 = __webpack_require__(79);
+var url_1 = __webpack_require__(80);
 var lazyLoad_1 = __webpack_require__(34);
 var transitionEventType_1 = __webpack_require__(45);
 var transitionHook_1 = __webpack_require__(13);
 var predicates_1 = __webpack_require__(1);
 var common_1 = __webpack_require__(0);
 var hof_1 = __webpack_require__(2);
-var ignoredTransition_1 = __webpack_require__(79);
-var invalidTransition_1 = __webpack_require__(80);
+var ignoredTransition_1 = __webpack_require__(74);
+var invalidTransition_1 = __webpack_require__(75);
 /**
  * The default [[Transition]] options.
  *
@@ -8792,11 +8792,11 @@ exports.ViewService = ViewService;
 __webpack_require__(15);
 
 // Load Angular and dependent libs
-__webpack_require__(66);
-__webpack_require__(68);
+__webpack_require__(61);
+__webpack_require__(63);
 
 // Now load Angular Material
-__webpack_require__(69);
+__webpack_require__(64);
 
 // Export namespace
 module.exports = 'ngMaterial';
@@ -8823,148 +8823,16 @@ __export(__webpack_require__(23));
 __export(__webpack_require__(24));
 __export(__webpack_require__(31));
 __export(__webpack_require__(32));
+__webpack_require__(67);
+__webpack_require__(65);
+__webpack_require__(69);
+__webpack_require__(66);
 __webpack_require__(72);
-__webpack_require__(70);
-__webpack_require__(74);
-__webpack_require__(71);
-__webpack_require__(77);
 exports.default = "ui.router";
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 /* 60 */
-/***/ (function(module, exports) {
-
-var heroListItemComponent = (function(){
-	angular.module("heroApp").component('dashboard',{
-		bindings: {},
-		template:'<ul class="heroes">'+
-					'<div class = "hero-dashboard-item" ng-repeat="hero in $ctrl.heroes">'+
-						'<a ui-sref= "details({id:{{hero.id}}})">'+
-							'<span>{{hero.id}}</span>.'+
-							'<span>{{hero.name}}</span>'+
-						'</a>'+
-					'</div>'+
-				  '</ul>',
-		controller: function(heroService){
-			var heroes = heroService.getHeroes().concat([]);
-			this.heroes = heroes.splice(0,4);
-		}
-	});
-})();
-
-module.exports = heroListItemComponent;
-
-
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports) {
-
-var heroDetailsComponent = (function(){
-	angular.module("heroApp").component('herodetails',{
-		bindings: {},
-		template:'<div class = "hero-details-container">'+
-					'<div>'+
-						'<label>ID</label>:<span class="badge">{{$ctrl.hero.id}}</span>'+
-					'</div>'+
-					'<label>Name</label>:<input ng-model = "$ctrl.hero.name"/>'+
-					'<button ng-click = $ctrl.saveDetails()>Save</button>'+
-				  '</div>',
-		controller: function($stateParams,heroService,$state){
-			var id = $stateParams.id;
-			this.hero = heroService.getHeroById(id);
-			this.saveDetails = function() {
-				heroService.setHero(this.hero.id,this.hero.name);
-				$state.go("heroes");
-			}
-		}		
-	});
-})();
-
-module.exports = heroDetailsComponent;
-
-
-/***/ }),
-/* 62 */
-/***/ (function(module, exports) {
-
-var heroListItemComponent = (function(){
-	angular.module("heroApp").component('herolistitem',{
-		bindings: {
-			hero: "<"
-		},
-		template:'<li>'+
-					 '<a ui-sref = "details({id:{{$ctrl.hero.id}}})">'+
-						'<span class="badge">{{$ctrl.hero.id}}</span>'+
-						'{{$ctrl.hero.name}}'+
-					 '</a>'+
-				 '</li>'
-	});
-})();
-
-module.exports = heroListItemComponent;
-
-
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports) {
-
-var heroListComponent = (function(){
-	angular.module("heroApp").component('herolist',{
-		bindings: {},		
-		template:'<ul class="heroes">'+
-					'<herolistitem ng-repeat="hero in $ctrl.heroes" hero="hero"></herolistitem>'+
-				 '</ul>',
-		controller: function(heroService){
-			this.heroes = heroService.getHeroes();
-		}
-	});
-})();
-
-module.exports = heroListComponent;
-  
-
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports) {
-
-var heroService = (function(){
-	angular.module("heroApp").service("heroService",function() {
-		this.heroes = [
-			{ id: 11, name: 'Mr. Nice' },
-			{ id: 12, name: 'Narco' },
-			{ id: 13, name: 'Bombasto' },
-			{ id: 14, name: 'Celeritas' },
-			{ id: 15, name: 'Magneta' },
-			{ id: 16, name: 'RubberMan' },
-			{ id: 17, name: 'Dynama' },
-			{ id: 18, name: 'Dr IQ' },
-			{ id: 19, name: 'Magma' },
-			{ id: 20, name: 'Tornado' }
-		]
-		this.getHeroes = function() {
-			return this.heroes;
-		}
-		this.getHeroById= function(id) {
-			var hero = this.heroes.filter(function(val) {
-				return val.id === parseInt(id);
-			});
-			return hero[0] || null;
-		}
-		this.setHero = function(id, name) {
-			var hero = this.heroes.filter(function(val) {
-				return val.id === parseInt(id);
-			});			
-			hero[0].name = name;
-		}
-	}); 
-})()
-
-/***/ }),
-/* 65 */
 /***/ (function(module, exports) {
 
 /**
@@ -13125,15 +12993,15 @@ angular.module('ngAnimate', [], function initAngularHelpers() {
 
 
 /***/ }),
-/* 66 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(65);
+__webpack_require__(60);
 module.exports = 'ngAnimate';
 
 
 /***/ }),
-/* 67 */
+/* 62 */
 /***/ (function(module, exports) {
 
 /**
@@ -13542,15 +13410,15 @@ ngAriaModule.directive('ngShow', ['$aria', function($aria) {
 
 
 /***/ }),
-/* 68 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(67);
+__webpack_require__(62);
 module.exports = 'ngAria';
 
 
 /***/ }),
-/* 69 */
+/* 64 */
 /***/ (function(module, exports) {
 
 /*!
@@ -49560,7 +49428,7 @@ angular.module("material.core").constant("$MD_THEME_CSS", "md-autocomplete.md-TH
 })(window, window.angular);;window.ngMaterial={version:{full: "1.1.4"}};
 
 /***/ }),
-/* 70 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50137,7 +50005,7 @@ angular_1.ng.module('ui.router.state')
 //# sourceMappingURL=stateDirectives.js.map
 
 /***/ }),
-/* 71 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50433,7 +50301,7 @@ angular_1.ng.module('ui.router.state').directive('uiView', $ViewDirectiveFill);
 //# sourceMappingURL=viewDirective.js.map
 
 /***/ }),
-/* 72 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50807,7 +50675,7 @@ var $urlMatcherFactoryProvider;
 //# sourceMappingURL=injectables.js.map
 
 /***/ }),
-/* 73 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50888,7 +50756,7 @@ exports.Ng1LocationServices = Ng1LocationServices;
 //# sourceMappingURL=locationServices.js.map
 
 /***/ }),
-/* 74 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50940,7 +50808,7 @@ angular_1.ng.module('ui.router.state')
 //# sourceMappingURL=stateFilters.js.map
 
 /***/ }),
-/* 75 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50971,7 +50839,7 @@ exports.getStateHookBuilder = function (hookName) {
 //# sourceMappingURL=onEnterExitRetain.js.map
 
 /***/ }),
-/* 76 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51171,7 +51039,7 @@ var scopeBindings = function (bindingsObj) { return Object.keys(bindingsObj || {
 //# sourceMappingURL=templateFactory.js.map
 
 /***/ }),
-/* 77 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51200,7 +51068,7 @@ angular_1.ng.module('ui.router.state').provider('$uiViewScroll', $ViewScrollProv
 //# sourceMappingURL=viewScroll.js.map
 
 /***/ }),
-/* 78 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51224,7 +51092,7 @@ exports.registerAddCoreResolvables = function (transitionService) {
 //# sourceMappingURL=coreResolvables.js.map
 
 /***/ }),
-/* 79 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51261,7 +51129,7 @@ exports.registerIgnoredTransitionHook = function (transitionService) {
 //# sourceMappingURL=ignoredTransition.js.map
 
 /***/ }),
-/* 80 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51286,7 +51154,7 @@ exports.registerInvalidTransitionHook = function (transitionService) {
 //# sourceMappingURL=invalidTransition.js.map
 
 /***/ }),
-/* 81 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51349,7 +51217,7 @@ exports.registerOnEnterHook = function (transitionService) {
 //# sourceMappingURL=onEnterExitRetain.js.map
 
 /***/ }),
-/* 82 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51392,7 +51260,7 @@ exports.registerRedirectToHook = function (transitionService) {
 //# sourceMappingURL=redirectTo.js.map
 
 /***/ }),
-/* 83 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51441,7 +51309,7 @@ exports.registerLazyResolveState = function (transitionService) {
 //# sourceMappingURL=resolve.js.map
 
 /***/ }),
-/* 84 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51482,7 +51350,7 @@ exports.registerUpdateGlobalState = function (transitionService) {
 //# sourceMappingURL=updateGlobals.js.map
 
 /***/ }),
-/* 85 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51513,7 +51381,7 @@ exports.registerUpdateUrl = function (transitionService) {
 //# sourceMappingURL=url.js.map
 
 /***/ }),
-/* 86 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51566,7 +51434,7 @@ exports.registerActivateViews = function (transitionService) {
 //# sourceMappingURL=views.js.map
 
 /***/ }),
-/* 87 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51593,7 +51461,7 @@ exports.UIRouterPluginBase = UIRouterPluginBase;
 //# sourceMappingURL=interface.js.map
 
 /***/ }),
-/* 88 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51609,7 +51477,7 @@ __export(__webpack_require__(26));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 89 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51624,7 +51492,7 @@ __export(__webpack_require__(18));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 90 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51640,7 +51508,7 @@ __export(__webpack_require__(19));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 91 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51659,7 +51527,7 @@ __export(__webpack_require__(7));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 92 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51693,7 +51561,7 @@ __export(__webpack_require__(30));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 93 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51710,7 +51578,7 @@ __export(__webpack_require__(49));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 94 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51724,11 +51592,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @module vanilla
  */
 /** */
-__export(__webpack_require__(95));
+__export(__webpack_require__(90));
 //# sourceMappingURL=vanilla.js.map
 
 /***/ }),
-/* 95 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51746,11 +51614,11 @@ __export(__webpack_require__(55));
 __export(__webpack_require__(53));
 __export(__webpack_require__(50));
 __export(__webpack_require__(14));
-__export(__webpack_require__(96));
+__export(__webpack_require__(91));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 96 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51785,7 +51653,7 @@ exports.memoryLocationPlugin = utils_1.locationPluginFactory("vanilla.memoryLoca
 //# sourceMappingURL=plugins.js.map
 
 /***/ }),
-/* 97 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51798,7 +51666,7 @@ __export(__webpack_require__(57));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 98 */
+/* 93 */
 /***/ (function(module, exports) {
 
 /**
@@ -85175,39 +85043,17 @@ $provide.value("$locale", {
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ }),
-/* 99 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var angular = __webpack_require__(15),
 	routeProvider = __webpack_require__(59),
 	angularMaterial = __webpack_require__(58);
 
-var app = angular.module("heroApp",['ui.router','ngMaterial']);
+var app = angular.module("tcsDiscussion",['ui.router','ngMaterial']);
 
-__webpack_require__(62);
-__webpack_require__(63);
-__webpack_require__(60);
-__webpack_require__(61);
-__webpack_require__(64);
+
 		
-app.config(function($stateProvider,$urlRouterProvider){
-			
-	$urlRouterProvider.otherwise('/dashboard');
-	$stateProvider
-		.state('dashboard', {
-			url: '/dashboard',
-			component:'dashboard'
-		})
-		.state('heroes', {
-			url: '/heroes',
-			component: 'herolist'
-		})
-		.state('details',{
-			url: '/details/:id',
-			component: 'herodetails'
-		});
-
-});
 
 
 		
