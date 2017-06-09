@@ -1,0 +1,11 @@
+
+<md-list flex>
+	<md-list-item class="md-2-line" ng-repeat = "item in discussionList.discussions">
+		<img ng-src="{{item.img}}" class="md-avatar" alt="{{item.topic}}" />
+		<div class="md-list-item-text">
+			<h3>{{ item.topic }}</h3>
+			<p>{{ item.about }}</p>
+		</div>		
+		<md-divider ></md-divider>
+	</md-list-item>
+</md-list>

@@ -3,3 +3,13 @@
     background: #075e54 !important;
     color: #FFF !important;
 }
+
+.dis-create-btn {
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+}
+
+md-nav-ink-bar {
+	background:white !important;
+}

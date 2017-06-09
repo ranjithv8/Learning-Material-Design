@@ -3,8 +3,12 @@ var homeComponent = (function(){
 		bindings: {},
 		templateUrl: 'app/components/home/home.html',
 		controller: function(){
-
-		}
+			this.menu_options = [
+				"Starred Discussions",
+				"Settings"
+			]
+		},
+		controllerAs:"homeController"
 	});
 })();
 

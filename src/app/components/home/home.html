@@ -1,26 +1,34 @@
-<md-toolbar class = "dis-green-header">
+<md-toolbar class = "md-hue-3">
   	<div class="md-toolbar-tools" md-scroll-shrink = "true">
     	<h2 flex md-truncate>DiscussApp v1.0</h2>
-    	<md-button class="md-icon-button" aria-label="More">
-      		<md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
-    	</md-button>
+      <md-menu md-position-mode="target-right target" >
+        <md-button class="md-icon-button" aria-label="More" ng-click="$mdMenu.open($event)">
+          <md-icon  md-menu-origin md-svg-icon="img/icons/more_vert.svg"></md-icon>
+        </md-button>
+        <md-menu-content width="4" >
+          <md-menu-item ng-repeat="item in homeController.menu_options">
+            <md-button>
+                <div layout="row" flex>
+                  <p flex>{{item}}</p>
+                </div>
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
   	</div>
 </md-toolbar>
-<md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" class = "dis-green-header">
-	<md-nav-item md-nav-click="goto('page1')" name="page1">DISCUSSIONS</md-nav-item>
-	<md-nav-item md-nav-click="goto('page2')" name="page2">CONTACTS</md-nav-item>
-	<md-nav-item md-nav-click="goto('page3')" name="page3">STATUS</md-nav-item>
-      <!-- these require actual routing with ui-router or ng-route, so they
-      won't work in the demo
-      <md-nav-item md-nav-href="#page4" name="page5">Page Four</md-nav-item>
-      <md-nav-item md-nav-sref="app.page5" name="page4">Page Five</md-nav-item>
-      You can also add options for the <code>ui-sref-opts</code> attribute.
-      <md-nav-item md-nav-sref="page6" sref-opts="{reload:true, notify:true}">
-        Page Six
-      </md-nav-item>
-      -->
-</md-nav-bar>
-    <div class="ext-content">
-      External content for `<span>{{currentNavItem}}</span>`.
-    </div>
-<div ui-view></div>
+<div layout = "column">
+  <md-toolbar >
+    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" class = "md-hue-3">
+    	<md-nav-item md-nav-sref = ".discussions">DISCUSSIONS</md-nav-item>
+    	<md-nav-item md-nav-sref = ".contacts">CONTACTS</md-nav-item>
+    	<md-nav-item md-nav-sref = ".status">STATUS</md-nav-item>
+    </md-nav-bar>
+  </md-toolbar>
+  <md-content>
+    <div ui-view></div>
+  </md-content>
+</div>
+<md-button class="md-fab dis-create-btn" aria-label="Comment">
+    <md-icon md-svg-src="img/icons/ic_comment_24px.svg"></md-icon>
+</md-button>
