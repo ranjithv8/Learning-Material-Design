@@ -1,0 +1,23 @@
+{
+  "name": "Tcs_Discussion",
+  "version": "0.0.1",
+  "description": "Discussion UI with material design",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "angular": "^1.6.4",
+    "angular-ui-router": "^1.0.3",
+    "webpack": "^2.6.1"
+  },
+  "dependencies": {
+    "angular-animate": "^1.6.4",
+    "angular-aria": "^1.6.4",
+    "angular-material": "^1.1.4"
+  }
+}
