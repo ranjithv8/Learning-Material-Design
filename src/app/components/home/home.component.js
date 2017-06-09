@@ -1,20 +1,12 @@
-var heroListItemComponent = (function(){
-	angular.module("heroApp").component('dashboard',{
+var homeComponent = (function(){
+	angular.module("tcsDiscussion").component('home',{
 		bindings: {},
-		template:'<ul class="heroes">'+
-					'<div class = "hero-dashboard-item" ng-repeat="hero in $ctrl.heroes">'+
-						'<a ui-sref= "details({id:{{hero.id}}})">'+
-							'<span>{{hero.id}}</span>.'+
-							'<span>{{hero.name}}</span>'+
-						'</a>'+
-					'</div>'+
-				  '</ul>',
-		controller: function(heroService){
-			var heroes = heroService.getHeroes().concat([]);
-			this.heroes = heroes.splice(0,4);
+		templateUrl: 'app/components/home/home.html',
+		controller: function(){
+
 		}
 	});
 })();
 
-module.exports = heroListItemComponent;
+module.exports = homeComponent;
 
